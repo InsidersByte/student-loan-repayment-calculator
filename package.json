@@ -1,0 +1,32 @@
+{
+  "name": "student-loan-repayment-calculator",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "accounting": "0.4.1",
+    "moment": "2.17.1",
+    "react": "15.4.1",
+    "react-dom": "15.4.1",
+    "styled-components": "1.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "7.1.1",
+    "eslint": "3.12.2",
+    "eslint-config-airbnb": "13.0.0",
+    "eslint-plugin-import": "2.1.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.8.0",
+    "flow-bin": "0.37.0",
+    "flow-typed": "2.0.0",
+    "react-scripts": "0.8.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.jsx .",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "flow": "flow",
+    "flow-typed": "flow-typed"
+  }
+}

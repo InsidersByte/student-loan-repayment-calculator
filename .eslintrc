@@ -1,0 +1,24 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+
+    "env": {
+        "browser": true
+    },
+
+    "rules": {
+        "indent": [2, 4, {"SwitchCase": 1}],
+        "max-len": [2, 160, 2],
+        "no-continue": 1,
+        "class-methods-use-this": 1,
+        "no-restricted-syntax": [
+            "error",
+            "ForInStatement",
+            "LabeledStatement",
+            "WithStatement"
+        ],
+
+        "react/jsx-indent-props": [2, 4],
+        "react/jsx-indent": [2, 4]
+    }
+}
