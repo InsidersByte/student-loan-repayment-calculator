@@ -53,10 +53,10 @@ export default class App extends Component {
 
         if (studentLoanableIncome <= 0) {
             return (
-                <div>
+                <Wrapper>
                     <Title>You don&#39;t yet earn enough to payback your student loan.</Title>
                     <Title>You need to earn a minimum of £{CONSTANTS.STUDENT_LOAN_FREE_AMOUNT}.</Title>
-                </div>
+                </Wrapper>
             );
         }
 
