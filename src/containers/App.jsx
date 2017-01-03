@@ -58,9 +58,8 @@ export default class App extends Component {
         if (studentLoanableIncome <= 0) {
             return (
                 <Wrapper>
-                    <Title>You don&#39;t yet earn enough to payback your student loan.</Title>
-                    <Title>You need to earn a minimum of £{CONSTANTS.STUDENT_LOAN_FREE_AMOUNT}.</Title>
-                    <Title>See <a href="http://www.slc.co.uk/services/loan-repayment/loan-cancellation.aspx">here</a> for more details.</Title>
+                    <SubTitle>You don&#39;t yet earn enough to payback your student loan.</SubTitle>
+                    <SubTitle>You need to earn a minimum of £{CONSTANTS.STUDENT_LOAN_FREE_AMOUNT}.</SubTitle>
                 </Wrapper>
             );
         }
@@ -71,7 +70,7 @@ export default class App extends Component {
         if (monthlyContribution < CONSTANTS.STUDENT_LOAN_MONTHLY_INTEREST_RATE * remaining) {
             return (
                 <Wrapper>
-                    <Title>Your student loan will be written off as your monthly payment amount is less than the interest chargeable.</Title>
+                    <SubTitle>Your student loan will be written off as your monthly payment amount is less than the interest chargeable.</SubTitle>
                 </Wrapper>
             );
         }
