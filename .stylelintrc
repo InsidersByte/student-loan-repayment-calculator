@@ -1,0 +1,9 @@
+{
+    "processors": ["stylelint-processor-styled-components"],
+    "extends": "stylelint-config-standard",
+    "syntax": "scss",
+    "rules": {
+        "indentation": 4,
+        "rule-non-nested-empty-line-before": "never-multi-line"
+    }
+}
