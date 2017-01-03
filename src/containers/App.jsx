@@ -62,8 +62,17 @@ export default class App extends Component {
 
         const monthlyStudentLoanableIncome = studentLoanableIncome / CONSTANTS.MONTHS_IN_YEAR;
         const monthlyContribution = monthlyStudentLoanableIncome * CONSTANTS.STUDENT_LOAN_CONTRIBUTION;
+
+        if (monthlyContribution < CONSTANTS.STUDENT_LOAN_MONTHLY_INTEREST_RATE * remaining) {
+            return (
+                <Wrapper>
+                    <Title>Your student loan will be written off as your monthly payment amount is less than the interest chargeable.</Title>
+                </Wrapper>
+            );
+        }
+
         const yearlyContribution = monthlyContribution * CONSTANTS.MONTHS_IN_YEAR;
-        const monthsToPayoff = Math.ceil(nper(CONSTANTS.STUDENT_LOAN_INTEREST_RATE / CONSTANTS.MONTHS_IN_YEAR, monthlyContribution, remaining));
+        const monthsToPayoff = Math.ceil(nper(CONSTANTS.STUDENT_LOAN_MONTHLY_INTEREST_RATE, monthlyContribution, remaining));
         const timeToPayoff = numberOfMonthsToYearsAndMonths(monthsToPayoff);
         const dateTillDebtFree = moment().add(monthsToPayoff, 'months');
 
