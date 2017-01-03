@@ -84,6 +84,7 @@ export default class App extends Component {
         const monthsToPayoff = Math.ceil(nper(CONSTANTS.STUDENT_LOAN_MONTHLY_INTEREST_RATE, monthlyContribution, remaining));
         const timeToPayoff = numberOfMonthsToYearsAndMonths(monthsToPayoff);
         const dateTillDebtFree = moment().add(monthsToPayoff, 'months');
+        const totalAmountRepayable = monthsToPayoff * monthlyContribution;
 
         return (
             <div>
@@ -98,6 +99,7 @@ export default class App extends Component {
                     <Text>Monthly Contribution: <CurrencyText value={monthlyContribution} /></Text>
                     <Text>Yearly Contribution: <CurrencyText value={yearlyContribution} /></Text>
                     <Text>Time to Payoff: {timeToPayoff}</Text>
+                    <Text>Total Amount Repayable: <CurrencyText value={totalAmountRepayable} /></Text>
                 </Wrapper>
             </div>
         );
