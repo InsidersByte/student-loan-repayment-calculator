@@ -1,7 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import moment from 'moment';
 import * as CONSTANTS from '../constants/index';
 import nper from '../util/nper';
@@ -10,12 +10,12 @@ import Input from '../components/Input';
 import CurrencyText from '../components/CurrencyText';
 
 const Title = styled.h1`
-    color: palevioletred;
+    color: ${props => props.theme.colour};
     font-size: 2.5em;
 `;
 
 const SubTitle = styled.h3`
-    color: palevioletred;
+    color: ${props => props.theme.colour};
 `;
 
 const Wrapper = styled.div`
@@ -23,15 +23,20 @@ const Wrapper = styled.div`
     text-align: center;
 
     &:nth-child(odd) {
-        background: papayawhip;
+        background: ${props => props.theme.backgroundColour};
     }
 `;
 
 const Text = styled.div`
+    color: ${props => props.theme.colour};
     font-size: 1.25em;
     margin: 0.5em;
-    color: palevioletred;
 `;
+
+const theme = {
+    backgroundColour: 'papayawhip',
+    colour: 'palevioletred',
+};
 
 export default class App extends Component {
     state = {
@@ -102,34 +107,36 @@ export default class App extends Component {
         const { remaining, salary } = this.state;
 
         return (
-            <div>
-                <Wrapper>
-                    <Title>Student Loan Repayment Calculator</Title>
+            <ThemeProvider theme={theme}>
+                <div>
+                    <Wrapper>
+                        <Title>Student Loan Repayment Calculator</Title>
 
-                    <SubTitle>Calculate how long it will take to pay off your student loan.</SubTitle>
-                </Wrapper>
+                        <SubTitle>Calculate how long it will take to pay off your student loan.</SubTitle>
+                    </Wrapper>
 
-                <Wrapper>
-                    <Input
-                        name="salary"
-                        placeholder="Salary"
-                        type="number"
-                        value={salary}
-                        onChange={this.onChange}
-                        autoFocus
-                    />
+                    <Wrapper>
+                        <Input
+                            name="salary"
+                            placeholder="Salary"
+                            type="number"
+                            value={salary}
+                            onChange={this.onChange}
+                            autoFocus
+                        />
 
-                    <Input
-                        name="remaining"
-                        placeholder="Student Loan"
-                        type="number"
-                        value={remaining}
-                        onChange={this.onChange}
-                    />
-                </Wrapper>
+                        <Input
+                            name="remaining"
+                            placeholder="Student Loan"
+                            type="number"
+                            value={remaining}
+                            onChange={this.onChange}
+                        />
+                    </Wrapper>
 
-                {this.showResults()}
-            </div>
+                    {this.showResults()}
+                </div>
+            </ThemeProvider>
         );
     }
 }

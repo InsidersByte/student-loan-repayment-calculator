@@ -6,8 +6,8 @@ const Input = styled.input`
     font-size: 1.25em;
     padding: 0.5em;
     margin: 0.5em;
-    color: palevioletred;
-    background: papayawhip;
+    color: ${props => props.theme.colour};
+    background: ${props => props.theme.backgroundColour};
     border: none;
     border-radius: 3px;
 
