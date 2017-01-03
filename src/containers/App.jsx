@@ -10,17 +10,21 @@ import Input from '../components/Input';
 import CurrencyText from '../components/CurrencyText';
 
 const Title = styled.h1`
-    font-size: 1.5em;
+    color: palevioletred;
+    font-size: 2.5em;
+`;
+
+const SubTitle = styled.h3`
     color: palevioletred;
 `;
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
     padding: 4em;
     text-align: center;
-`;
 
-const TitleWrapper = styled(Wrapper)`
-    background: papayawhip;
+    &:nth-child(odd) {
+        background: papayawhip;
+    }
 `;
 
 const Text = styled.div`
@@ -56,6 +60,7 @@ export default class App extends Component {
                 <Wrapper>
                     <Title>You don&#39;t yet earn enough to payback your student loan.</Title>
                     <Title>You need to earn a minimum of £{CONSTANTS.STUDENT_LOAN_FREE_AMOUNT}.</Title>
+                    <Title>See <a href="http://www.slc.co.uk/services/loan-repayment/loan-cancellation.aspx">here</a> for more details.</Title>
                 </Wrapper>
             );
         }
@@ -77,14 +82,20 @@ export default class App extends Component {
         const dateTillDebtFree = moment().add(monthsToPayoff, 'months');
 
         return (
-            <Wrapper>
-                <Text>Student Loanable Income: <CurrencyText value={studentLoanableIncome} /></Text>
-                <Text>Monthly Student Loanable Income: <CurrencyText value={monthlyStudentLoanableIncome} /></Text>
-                <Text>Monthly Contribution: <CurrencyText value={monthlyContribution} /></Text>
-                <Text>Yearly Contribution: <CurrencyText value={yearlyContribution} /></Text>
-                <Text>Time to Payoff: {timeToPayoff}</Text>
-                <Text>Date Till Debt Free to Payoff: {dateTillDebtFree.format('MMMM YYYY')}</Text>
-            </Wrapper>
+            <div>
+                <Wrapper>
+                    <SubTitle>I will be debt free by</SubTitle>
+                    <Title>{dateTillDebtFree.format('MMMM YYYY')}</Title>
+                </Wrapper>
+
+                <Wrapper>
+                    <Text>Student Loanable Income: <CurrencyText value={studentLoanableIncome} /></Text>
+                    <Text>Monthly Student Loanable Income: <CurrencyText value={monthlyStudentLoanableIncome} /></Text>
+                    <Text>Monthly Contribution: <CurrencyText value={monthlyContribution} /></Text>
+                    <Text>Yearly Contribution: <CurrencyText value={yearlyContribution} /></Text>
+                    <Text>Time to Payoff: {timeToPayoff}</Text>
+                </Wrapper>
+            </div>
         );
     };
 
@@ -93,9 +104,11 @@ export default class App extends Component {
 
         return (
             <div>
-                <TitleWrapper>
+                <Wrapper>
                     <Title>Student Loan Repayment Calculator</Title>
-                </TitleWrapper>
+
+                    <SubTitle>Calculate how long it will take to pay off your student loan.</SubTitle>
+                </Wrapper>
 
                 <Wrapper>
                     <Input
