@@ -32,7 +32,8 @@
     "lint:css": "stylelint './src/**/*.{js,jsx}'",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npm run build&&gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "flow": "flow",
     "flow-typed": "flow-typed"
   }

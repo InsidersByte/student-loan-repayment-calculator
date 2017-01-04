@@ -10,6 +10,7 @@ const Input = styled.input`
     background: ${props => props.theme.backgroundColour};
     border: none;
     border-radius: 3px;
+    max-width: 100%;
 
     &:hover {
         box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
