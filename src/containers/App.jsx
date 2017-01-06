@@ -1,45 +1,18 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import moment from 'moment';
 import * as CONSTANTS from '../constants/index';
 import nper from '../util/nper';
 import { numberOfMonthsToYearsAndMonths } from '../util/dateHelper';
-import Input from '../components/Input';
+import Wrapper from '../components/Wrapper';
+import Header from '../components/Header';
+import Form from '../components/Form';
+import Title from '../components/Title';
+import SubTitle from '../components/SubTitle';
+import Text from '../components/Text';
 import CurrencyText from '../components/CurrencyText';
-
-const Title = styled.h1`
-    color: ${props => props.theme.colour};
-    font-size: 2.5em;
-`;
-
-const SubTitle = styled.h3`
-    color: ${props => props.theme.colour};
-`;
-
-const Wrapper = styled.div`
-    padding: 4em;
-    text-align: center;
-
-    &:nth-child(odd) {
-        background: ${props => props.theme.backgroundColour};
-    }
-    
-    @media (max-width: 1279px) {
-        padding: 2em;
-    }
-    
-    @media (max-width: 736px) {
-        padding: 1em;
-    }
-`;
-
-const Text = styled.div`
-    color: ${props => props.theme.colour};
-    font-size: 1.25em;
-    margin: 0.5em;
-`;
 
 const theme = {
     backgroundColour: 'papayawhip',
@@ -71,8 +44,8 @@ export default class App extends Component {
         if (studentLoanableIncome <= 0) {
             return (
                 <Wrapper>
-                    <SubTitle>You don&#39;t yet earn enough to payback your student loan.</SubTitle>
-                    <SubTitle>You need to earn a minimum of £{CONSTANTS.STUDENT_LOAN_FREE_AMOUNT}.</SubTitle>
+                    <SubTitle>You don&#39;t yet earn enough to payback your student loan.<br/><br/>
+                    You need to earn a minimum of £{CONSTANTS.STUDENT_LOAN_FREE_AMOUNT}.</SubTitle>
                 </Wrapper>
             );
         }
@@ -119,30 +92,13 @@ export default class App extends Component {
         return (
             <ThemeProvider theme={theme}>
                 <div>
-                    <Wrapper>
-                        <Title>Student Loan Repayment Calculator</Title>
+                    <Header />
 
-                        <SubTitle>Calculate how long it will take to pay off your student loan.</SubTitle>
-                    </Wrapper>
-
-                    <Wrapper>
-                        <Input
-                            name="salary"
-                            placeholder="Salary"
-                            type="number"
-                            value={salary}
-                            onChange={this.onChange}
-                            autoFocus
-                        />
-
-                        <Input
-                            name="remaining"
-                            placeholder="Student Loan"
-                            type="number"
-                            value={remaining}
-                            onChange={this.onChange}
-                        />
-                    </Wrapper>
+                    <Form
+                        salary={salary}
+                        remaining={remaining}
+                        onChange={this.onChange}
+                    />
 
                     {this.showResults()}
                 </div>
