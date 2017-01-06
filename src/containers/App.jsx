@@ -9,10 +9,8 @@ import { numberOfMonthsToYearsAndMonths } from '../util/dateHelper';
 import Wrapper from '../components/Wrapper';
 import Header from '../components/Header';
 import Form from '../components/Form';
-import Title from '../components/Title';
 import SubTitle from '../components/SubTitle';
-import Text from '../components/Text';
-import CurrencyText from '../components/CurrencyText';
+import Result from '../components/Result';
 
 const theme = {
     backgroundColour: 'papayawhip',
@@ -44,8 +42,8 @@ export default class App extends Component {
         if (studentLoanableIncome <= 0) {
             return (
                 <Wrapper>
-                    <SubTitle>You don&#39;t yet earn enough to payback your student loan.<br/><br/>
-                    You need to earn a minimum of £{CONSTANTS.STUDENT_LOAN_FREE_AMOUNT}.</SubTitle>
+                    <SubTitle>You don&#39;t yet earn enough to payback your student loan.</SubTitle>
+                    <SubTitle>You need to earn a minimum of £{CONSTANTS.STUDENT_LOAN_FREE_AMOUNT}.</SubTitle>
                 </Wrapper>
             );
         }
@@ -68,21 +66,15 @@ export default class App extends Component {
         const totalAmountRepayable = monthsToPayoff * monthlyContribution;
 
         return (
-            <div>
-                <Wrapper>
-                    <SubTitle>I will be debt free by</SubTitle>
-                    <Title>{dateTillDebtFree.format('MMMM YYYY')}</Title>
-                </Wrapper>
-
-                <Wrapper>
-                    <Text>Student Loanable Income: <CurrencyText value={studentLoanableIncome} /></Text>
-                    <Text>Monthly Student Loanable Income: <CurrencyText value={monthlyStudentLoanableIncome} /></Text>
-                    <Text>Monthly Contribution: <CurrencyText value={monthlyContribution} /></Text>
-                    <Text>Yearly Contribution: <CurrencyText value={yearlyContribution} /></Text>
-                    <Text>Time to Payoff: {timeToPayoff}</Text>
-                    <Text>Total Amount Repayable: <CurrencyText value={totalAmountRepayable} /></Text>
-                </Wrapper>
-            </div>
+            <Result
+                dateTillDebtFree={dateTillDebtFree}
+                studentLoanableIncome={studentLoanableIncome}
+                monthlyStudentLoanableIncome={monthlyStudentLoanableIncome}
+                monthlyContribution={monthlyContribution}
+                yearlyContribution={yearlyContribution}
+                timeToPayoff={timeToPayoff}
+                totalAmountRepayable={totalAmountRepayable}
+            />
         );
     };
 
