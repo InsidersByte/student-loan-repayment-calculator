@@ -9,11 +9,11 @@ const Wrapper = styled.div`
     &:nth-child(odd) {
         background: ${props => props.theme.backgroundColour};
     }
-    
+
     @media (max-width: 1279px) {
         padding: 2em;
     }
-    
+
     @media (max-width: 736px) {
         padding: 1em;
     }

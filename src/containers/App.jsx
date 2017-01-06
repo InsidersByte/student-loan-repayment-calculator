@@ -62,7 +62,8 @@ export default class App extends Component {
         const yearlyContribution = monthlyContribution * CONSTANTS.MONTHS_IN_YEAR;
         const monthsToPayoff = Math.ceil(nper(CONSTANTS.STUDENT_LOAN_MONTHLY_INTEREST_RATE, monthlyContribution, remaining));
         const timeToPayoff = numberOfMonthsToYearsAndMonths(monthsToPayoff);
-        const dateTillDebtFree = moment().add(monthsToPayoff, 'months');
+        const lastValuationDate = moment(CONSTANTS.STUDENT_LOAN_LAST_VALUATION_DATE, 'DD/MM/YYYY');
+        const dateTillDebtFree = moment(lastValuationDate).add(monthsToPayoff, 'months');
         const totalAmountRepayable = monthsToPayoff * monthlyContribution;
 
         return (
