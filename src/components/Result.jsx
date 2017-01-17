@@ -13,11 +13,10 @@ type PropsType = {
     monthlyStudentLoanableIncome: number,
     monthlyContribution: number,
     yearlyContribution: number,
-    timeToPayoff: string,
     totalAmountRepayable: number,
 }
 
-const Result = ({ dateTillDebtFree, studentLoanableIncome, monthlyStudentLoanableIncome, monthlyContribution, yearlyContribution, timeToPayoff, totalAmountRepayable }: PropsType) =>
+const Result = ({ dateTillDebtFree, studentLoanableIncome, monthlyStudentLoanableIncome, monthlyContribution, yearlyContribution, totalAmountRepayable }: PropsType) =>
     <div>
         <Wrapper>
             <SubTitle>I will be debt free by</SubTitle>
@@ -25,12 +24,11 @@ const Result = ({ dateTillDebtFree, studentLoanableIncome, monthlyStudentLoanabl
         </Wrapper>
 
         <Wrapper>
-            <Text>Student Loanable Income: <CurrencyText value={studentLoanableIncome} /></Text>
-            <Text>Monthly Student Loanable Income: <CurrencyText value={monthlyStudentLoanableIncome} /></Text>
-            <Text>Monthly Contribution: <CurrencyText value={monthlyContribution} /></Text>
-            <Text>Yearly Contribution: <CurrencyText value={yearlyContribution} /></Text>
-            <Text>Time to Payoff: {timeToPayoff}</Text>
-            <Text>Total Amount Repayable: <CurrencyText value={totalAmountRepayable} /></Text>
+            <Text>Student Loanable Income <CurrencyText value={studentLoanableIncome} /></Text>
+            <Text>Monthly Student Loanable Income <CurrencyText value={monthlyStudentLoanableIncome} /></Text>
+            <Text>Monthly Contribution <CurrencyText value={monthlyContribution} /></Text>
+            <Text>Yearly Contribution <CurrencyText value={yearlyContribution} /></Text>
+            <Text>Total Amount Repayable <CurrencyText value={totalAmountRepayable} /></Text>
         </Wrapper>
     </div>
 ;

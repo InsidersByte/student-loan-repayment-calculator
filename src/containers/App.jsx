@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import moment from 'moment';
 import * as CONSTANTS from '../constants/index';
 import nper from '../util/nper';
-import { numberOfMonthsToYearsAndMonths } from '../util/dateHelper';
 import Wrapper from '../components/Wrapper';
 import Header from '../components/Header';
 import Form from '../components/Form';
@@ -61,7 +60,6 @@ export default class App extends Component {
 
         const yearlyContribution = monthlyContribution * CONSTANTS.MONTHS_IN_YEAR;
         const monthsToPayoff = Math.ceil(nper(CONSTANTS.STUDENT_LOAN_MONTHLY_INTEREST_RATE, monthlyContribution, remaining));
-        const timeToPayoff = numberOfMonthsToYearsAndMonths(monthsToPayoff);
         const lastValuationDate = moment(CONSTANTS.STUDENT_LOAN_LAST_VALUATION_DATE, 'DD/MM/YYYY');
         const dateTillDebtFree = moment(lastValuationDate).add(monthsToPayoff, 'months');
         const totalAmountRepayable = monthsToPayoff * monthlyContribution;
@@ -73,7 +71,6 @@ export default class App extends Component {
                 monthlyStudentLoanableIncome={monthlyStudentLoanableIncome}
                 monthlyContribution={monthlyContribution}
                 yearlyContribution={yearlyContribution}
-                timeToPayoff={timeToPayoff}
                 totalAmountRepayable={totalAmountRepayable}
             />
         );
